@@ -2,36 +2,36 @@
 
 set -e
 
-mysql_ready='nc -z db-headless 3306'
+DB_HOST="db-headless"
+DB_PORT=3306
 
-if ! $mysql_ready
-then
-    printf 'Waiting for MySQL.'
-    while ! $mysql_ready
-    do
-        printf '.'
-        sleep 1
-    done
-    echo
+until nc -z "$DB_HOST" "$DB_PORT"; do
+    printf '.'
+    sleep 1
+done
+
+# Check if WordPress is already installed
+if wp core is-installed --quiet; then
+    exit 0
 fi
 
-if wp core is-installed
-then
-    echo "WordPress is already installed, exiting."
-    exit
-fi
-
+# Download WordPress (force to ensure it's fresh)
 wp core download --force
 
-[ -f wp-config.php ] || wp config create \
-    --dbhost="$WORDPRESS_DB_HOST" \
-    --dbname="$WORDPRESS_DB_NAME" \
-    --dbuser="$WORDPRESS_DB_USER" \
-    --dbpass="$WORDPRESS_DB_PASSWORD"
+# Generate wp-config.php if it does not exist
+if [ ! -f wp-config.php ]; then
+    wp config create \
+        --dbhost="$WORDPRESS_DB_HOST" \
+        --dbname="$WORDPRESS_DB_NAME" \
+        --dbuser="$WORDPRESS_DB_USER" \
+        --dbpass="$WORDPRESS_DB_PASSWORD"
+fi
 
+# Set authentication secrets
 wp config set JWT_AUTH_SECRET_KEY 'your-secret-here'
 wp config set GRAPHQL_JWT_AUTH_SECRET_KEY 'your-secret-here'
 
+# Install WordPress
 wp core install \
     --url="$WORDPRESS_URL" \
     --title="$WORDPRESS_TITLE" \
@@ -40,13 +40,16 @@ wp core install \
     --admin_email="$WORDPRESS_ADMIN_EMAIL" \
     --skip-email
 
+# Update settings
 wp option update blogdescription "$WORDPRESS_DESCRIPTION"
 wp rewrite structure "$WORDPRESS_PERMALINK_STRUCTURE"
 
+# Activate theme and remove defaults
 wp theme activate postlight-headless-wp
-wp theme delete twentytwenty twentytwentyone twentytwentytwo
+wp theme delete twentytwentyfive twentytwentythree twentytwentyfour --force
 
-wp plugin delete akismet hello
+# Remove default plugins and install necessary ones
+wp plugin delete akismet hello --quiet
 wp plugin install --activate --force \
     acf-to-wp-api \
     advanced-custom-fields \
@@ -59,18 +62,5 @@ wp plugin install --activate --force \
     https://github.com/wp-graphql/wp-graphql-acf/archive/master.zip \
     /var/www/plugins/*.zip
 
-wp term update category 1 --name="Sample Category"
-wp post delete 1 2
-
-wp import /var/www/postlightheadlesswpstarter.wordpress.xml --authors=skip --skip=attachment
-
-wp media import /var/www/images/Graphql2.png --featured_image \
-  --post_id=$(wp post list --field=ID --name=what-do-you-need-to-know-about-graphql)
-wp media import /var/www/images/19-word-press-without-shame-0.png --featured_image \
-  --post_id=$(wp post list --field=ID --name=wordpress-without-shame)
-wp media import /var/www/images/cropped-hal-gatewood-tZc3vjPCk-Q-unsplash.jpg --featured_image \
-  --post_id=$(wp post list --field=ID --name=why-bother-with-a-headless-cms)
-wp media import /var/www/images/careers-photo-opt.jpg --featured_image \
-  --post_id=$(wp post list --field=ID --post_type=page --name=postlight-careers)
-
-echo "Great. You can now log into WordPress at: $WORDPRESS_URL/wp-admin ($WORDPRESS_ADMIN_USER/$WORDPRESS_ADMIN_PASSWORD)"
+# Import starter content
+wp import /var/www/initial.wordpress.xml --authors=skip --skip=attachment
