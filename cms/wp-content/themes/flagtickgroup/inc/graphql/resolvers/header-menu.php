@@ -50,7 +50,7 @@ add_action(
             'headerMenu',
             array(
                 'type'        =>  ['list_of' => 'HeaderMenuType'],
-                'description' => __('Returns the header menu items', 'postlight-headless-wp'),
+                'description' => __('Returns the header menu items', 'flagtickgroup'),
                 'resolve'     => function () {
                     return get_items();
                 },
