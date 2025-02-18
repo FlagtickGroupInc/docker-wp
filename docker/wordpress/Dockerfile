@@ -1,5 +1,11 @@
 FROM wordpress:latest
 
+USER root
+
+# Set correct permissions for wp-content (avoid modifying entire /var/www/html)
+RUN chown -R www-data:www-data /var/www/html/wp-content && \
+    chmod -R 775 /var/www/html/wp-content
+
 # Change Apache port from 80 to 8080
 RUN sed -i 's/80/8080/' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
 

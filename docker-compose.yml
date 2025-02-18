@@ -13,7 +13,9 @@ services:
             - '3307:3306'
 
     wp-headless:
-        build: .
+        build:
+            context: .
+            dockerfile: ./docker/wordpress/Dockerfile
         command: bash -c 'install_wordpress && apache2-foreground'
         container_name: wp-headless
         depends_on:
