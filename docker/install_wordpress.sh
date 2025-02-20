@@ -10,14 +10,6 @@ until nc -z "$DB_HOST" "$DB_PORT"; do
     sleep 1
 done
 
-# Check if WordPress is already installed
-if wp core is-installed --quiet; then
-    exit 0
-fi
-
-# Download WordPress (force to ensure it's fresh)
-wp core download --force
-
 # Generate wp-config.php if it does not exist
 if [ ! -f wp-config.php ]; then
     wp config create \
