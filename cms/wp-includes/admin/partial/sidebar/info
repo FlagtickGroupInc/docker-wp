@@ -1,0 +1,12 @@
+Modify and Move menu-header.php → class-sidebar.php
+Move admin-header.php → header-functions.php
+
+Using 
+```
+
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php'
+``` to know which pages in Admin site is using it.
+
+/about -> http://localhost:8080/wp-admin/about.php
+/authorize-application -> http://localhost:8080/wp-admin/authorize-application
+/...

@@ -34,7 +34,7 @@ if ( isset( $_GET['action'] ) ) {
 				$title       = __( 'Users' );
 				$parent_file = 'users.php';
 
-				require_once ABSPATH . 'wp-admin/admin-header.php';
+                require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 				echo '<div class="wrap">';
 				confirm_delete_users( $_POST['allusers'] );
@@ -69,7 +69,7 @@ if ( isset( $_GET['action'] ) ) {
 								$title       = __( 'Users' );
 								$parent_file = 'users.php';
 
-								require_once ABSPATH . 'wp-admin/admin-header.php';
+                                require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 								echo '<div class="wrap">';
 								confirm_delete_users( $_POST['allusers'] );
@@ -251,7 +251,7 @@ get_current_screen()->set_screen_reader_content(
 	)
 );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 if ( isset( $_REQUEST['updated'] ) && 'true' === $_REQUEST['updated'] && ! empty( $_REQUEST['action'] ) ) {
 	$message = '';

@@ -160,7 +160,7 @@ if ( $action ) {
 			$parent_file = 'plugins.php';
 
 			wp_enqueue_script( 'updates' );
-			require_once ABSPATH . 'wp-admin/admin-header.php';
+            require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 			echo '<div class="wrap">';
 			echo '<h1>' . esc_html( $title ) . '</h1>';
@@ -300,7 +300,7 @@ if ( $action ) {
 
 			if ( ! isset( $_REQUEST['verify-delete'] ) ) {
 				wp_enqueue_script( 'jquery' );
-				require_once ABSPATH . 'wp-admin/admin-header.php';
+                require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 				?>
 				<div class="wrap">
@@ -634,7 +634,7 @@ get_current_screen()->set_screen_reader_content(
 $title       = __( 'Plugins' );
 $parent_file = 'plugins.php';
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 $invalid = validate_active_plugins();
 if ( ! empty( $invalid ) ) {

@@ -327,7 +327,7 @@ if ( is_multisite() && current_user_can( 'promote_users' ) && ! wp_is_large_netw
 	wp_enqueue_script( 'user-suggest' );
 }
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 if ( isset( $_GET['update'] ) ) {
 	$messages = array();

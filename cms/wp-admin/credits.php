@@ -15,7 +15,7 @@ $title = __( 'Credits' );
 
 list( $display_version ) = explode( '-', get_bloginfo( 'version' ) );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 $credits = wp_credits();
 ?>

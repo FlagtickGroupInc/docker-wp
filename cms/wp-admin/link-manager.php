@@ -86,7 +86,7 @@ get_current_screen()->set_screen_reader_content(
 	)
 );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 if ( ! current_user_can( 'manage_links' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to edit the links for this site.' ) );

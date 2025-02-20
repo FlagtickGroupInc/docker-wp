@@ -100,7 +100,7 @@ if ( isset( $_GET['update'] ) ) {
 $title       = __( 'Add New User' );
 $parent_file = 'users.php';
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap">

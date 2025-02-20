@@ -134,7 +134,7 @@ $screen->set_help_sidebar(
 	'<p>' . $wp_version_text . '</p>'
 );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap">

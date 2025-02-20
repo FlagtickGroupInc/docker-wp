@@ -39,7 +39,7 @@ $user = wp_get_current_user();
 $title       = __( 'Delete Site' );
 $parent_file = 'tools.php';
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 echo '<div class="wrap">';
 echo '<h1>' . esc_html( $title ) . '</h1>';

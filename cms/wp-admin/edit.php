@@ -408,7 +408,7 @@ $bulk_messages['wp_block'] = array(
 $bulk_messages = apply_filters( 'bulk_post_updated_messages', $bulk_messages, $bulk_counts );
 $bulk_counts   = array_filter( $bulk_counts );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 <div class="wrap">
 <h1 class="wp-heading-inline">

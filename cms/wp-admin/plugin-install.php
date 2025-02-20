@@ -133,7 +133,7 @@ get_current_screen()->set_screen_reader_content(
 /**
  * WordPress Administration Template Header.
  */
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 WP_Plugin_Dependencies::initialize();
 WP_Plugin_Dependencies::display_admin_notice_for_unmet_dependencies();

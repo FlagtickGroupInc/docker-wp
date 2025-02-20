@@ -56,7 +56,7 @@ get_current_screen()->set_help_sidebar(
 
 wp_enqueue_script( 'user-profile' );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap">

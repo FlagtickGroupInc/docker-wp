@@ -107,7 +107,7 @@ if ( isset( $_GET['action'] ) ) {
 		$site_details = get_site( $id );
 		$site_address = untrailingslashit( $site_details->domain . $site_details->path );
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 		?>
 			<div class="wrap">
 				<h1><?php _e( 'Confirm your action' ); ?></h1>
@@ -197,7 +197,7 @@ if ( isset( $_GET['action'] ) ) {
 					if ( 0 !== $site_id && ! is_main_site( $site_id ) ) {
 						switch ( $doaction ) {
 							case 'delete':
-								require_once ABSPATH . 'wp-admin/admin-header.php';
+                                require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 								?>
 								<div class="wrap">
 									<h1><?php _e( 'Confirm your action' ); ?></h1>
@@ -381,7 +381,7 @@ if ( isset( $_GET['updated'] ) ) {
 
 $wp_list_table->prepare_items();
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap">

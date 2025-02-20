@@ -176,7 +176,7 @@ if (
 /** This action is documented in wp-admin/edit-form-blocks.php */
 do_action( 'enqueue_block_editor_assets' );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="edit-site" id="site-editor">

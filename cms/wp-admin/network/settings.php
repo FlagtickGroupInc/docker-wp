@@ -135,7 +135,7 @@ if ( $_POST ) {
 	exit;
 }
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 if ( isset( $_GET['updated'] ) ) {
 	wp_admin_notice(

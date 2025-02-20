@@ -204,7 +204,7 @@ if ( 'grid' === $mode ) {
 	$title       = __( 'Media Library' );
 	$parent_file = 'upload.php';
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+    require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	?>
 	<div class="wrap" id="wp-media-grid" data-search="<?php _admin_search_query(); ?>">
 		<h1 class="wp-heading-inline"><?php echo esc_html( $title ); ?></h1>
@@ -410,7 +410,7 @@ get_current_screen()->set_screen_reader_content(
 	)
 );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap">

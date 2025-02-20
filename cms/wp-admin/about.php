@@ -27,7 +27,7 @@ $field_guide_url = sprintf(
 	'6-7'
 );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 	<div class="wrap about__container">
 

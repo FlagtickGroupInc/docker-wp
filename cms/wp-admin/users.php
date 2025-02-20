@@ -330,7 +330,7 @@ switch ( $wp_list_table->current_action() ) {
 			add_action( 'admin_head', 'delete_users_add_js' );
 		}
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 		?>
 		<form method="post" name="updateusers" id="updateusers">
 		<?php wp_nonce_field( 'delete-users' ); ?>
@@ -508,7 +508,7 @@ switch ( $wp_list_table->current_action() ) {
 			$user_ids = array_map( 'intval', (array) $_REQUEST['users'] );
 		}
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 		?>
 		<form method="post" name="updateusers" id="updateusers">
 		<?php wp_nonce_field( 'remove-users' ); ?>
@@ -601,7 +601,7 @@ switch ( $wp_list_table->current_action() ) {
 			exit;
 		}
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		$messages = array();
 		if ( isset( $_GET['update'] ) ) :

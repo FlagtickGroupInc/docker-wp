@@ -1061,7 +1061,7 @@ if ( 'upgrade-core' === $action ) {
 	$force_check = ! empty( $_GET['force-check'] );
 	wp_version_check( array(), $force_check );
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+	require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	?>
 	<div class="wrap">
 	<h1><?php _e( 'WordPress Updates' ); ?></h1>
@@ -1164,7 +1164,7 @@ if ( 'upgrade-core' === $action ) {
 		do_undismiss_core_update();
 	}
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+	require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	if ( 'do-core-reinstall' === $action ) {
 		$reinstall = true;
 	} else {
@@ -1208,7 +1208,7 @@ if ( 'upgrade-core' === $action ) {
 	// Used in the HTML title tag.
 	$title = __( 'Update Plugins' );
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+	require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	?>
 	<div class="wrap">
 		<h1><?php _e( 'Update Plugins' ); ?></h1>
@@ -1249,7 +1249,7 @@ if ( 'upgrade-core' === $action ) {
 	// Used in the HTML title tag.
 	$title = __( 'Update Themes' );
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+	require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	?>
 	<div class="wrap">
 		<h1><?php _e( 'Update Themes' ); ?></h1>
@@ -1275,7 +1275,7 @@ if ( 'upgrade-core' === $action ) {
 
 	check_admin_referer( 'upgrade-translations' );
 
-	require_once ABSPATH . 'wp-admin/admin-header.php';
+	require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
 	$url     = 'update-core.php?action=do-translation-upgrade';

@@ -93,7 +93,7 @@ get_current_screen()->set_help_sidebar(
 // Start by checking if this is a special request checking for the existence of certain filters.
 $health_check_site_status->check_wp_version_check_exists();
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 <div class="health-check-header">
 	<div class="health-check-title-section">

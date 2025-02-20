@@ -773,7 +773,7 @@ get_current_screen()->set_help_sidebar(
 );
 
 // Get the admin header.
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 <div class="wrap">
 	<h1 class="wp-heading-inline"><?php esc_html_e( 'Menus' ); ?></h1>

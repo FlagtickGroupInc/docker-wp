@@ -65,7 +65,7 @@ if ( isset( $_GET['action'] ) ) {
 		$submenu_file = 'plugins.php';
 
 		wp_enqueue_script( 'updates' );
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		$nonce = 'upgrade-plugin_' . $plugin;
 		$url   = 'update.php?action=upgrade-plugin&plugin=' . urlencode( $plugin );
@@ -129,7 +129,7 @@ if ( isset( $_GET['action'] ) ) {
 		$parent_file  = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		/* translators: %s: Plugin name and version. */
 		$title = sprintf( __( 'Installing Plugin: %s' ), $api->name . ' ' . $api->version );
@@ -165,7 +165,7 @@ if ( isset( $_GET['action'] ) ) {
 		$parent_file  = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		/* translators: %s: File name. */
 		$title = sprintf( __( 'Installing plugin from uploaded file: %s' ), esc_html( basename( $file_upload->filename ) ) );
@@ -220,7 +220,7 @@ if ( isset( $_GET['action'] ) ) {
 		$parent_file  = 'themes.php';
 		$submenu_file = 'themes.php';
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		$nonce = 'upgrade-theme_' . $theme;
 		$url   = 'update.php?action=upgrade-theme&theme=' . urlencode( $theme );
@@ -285,7 +285,7 @@ if ( isset( $_GET['action'] ) ) {
 		$parent_file  = 'themes.php';
 		$submenu_file = 'themes.php';
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		/* translators: %s: Theme name and version. */
 		$title = sprintf( __( 'Installing Theme: %s' ), $api->name . ' ' . $api->version );
@@ -317,7 +317,7 @@ if ( isset( $_GET['action'] ) ) {
 		$parent_file  = 'themes.php';
 		$submenu_file = 'theme-install.php';
 
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 		/* translators: %s: File name. */
 		$title = sprintf( __( 'Installing theme from uploaded file: %s' ), esc_html( basename( $file_upload->filename ) ) );

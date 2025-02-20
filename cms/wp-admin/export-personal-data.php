@@ -100,7 +100,7 @@ $requests_table->screen->set_screen_reader_content(
 $requests_table->process_bulk_action();
 $requests_table->prepare_items();
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 ?>
 
 <div class="wrap nosubsub">

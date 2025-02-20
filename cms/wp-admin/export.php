@@ -124,7 +124,7 @@ if ( isset( $_GET['download'] ) ) {
 	die();
 }
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 /**
  * Creates the date options fields for exporting a given post type.

@@ -85,7 +85,7 @@ if ( $action ) {
 			$title       = __( 'Update Themes' );
 			$parent_file = 'themes.php';
 
-			require_once ABSPATH . 'wp-admin/admin-header.php';
+            require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 			echo '<div class="wrap">';
 			echo '<h1>' . esc_html( $title ) . '</h1>';
@@ -129,7 +129,7 @@ if ( $action ) {
 
 			if ( ! isset( $_REQUEST['verify-delete'] ) ) {
 				wp_enqueue_script( 'jquery' );
-				require_once ABSPATH . 'wp-admin/admin-header.php';
+                require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 				$themes_to_delete = count( $themes );
 				?>
 				<div class="wrap">
@@ -355,7 +355,7 @@ $parent_file = 'themes.php';
 wp_enqueue_script( 'updates' );
 wp_enqueue_script( 'theme-preview' );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 ?>
 

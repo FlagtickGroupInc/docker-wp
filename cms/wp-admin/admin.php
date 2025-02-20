@@ -236,7 +236,7 @@ if ( isset( $plugin_page ) ) {
 		 */
 		do_action( "load-{$page_hook}" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 		if ( ! isset( $_GET['noheader'] ) ) {
-			require_once ABSPATH . 'wp-admin/admin-header.php';
+            require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 		}
 
 		/**
@@ -284,7 +284,7 @@ if ( isset( $plugin_page ) ) {
 		do_action( "load-{$plugin_page}" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
 		if ( ! isset( $_GET['noheader'] ) ) {
-			require_once ABSPATH . 'wp-admin/admin-header.php';
+            require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 		}
 
 		if ( file_exists( WPMU_PLUGIN_DIR . "/$plugin_page" ) ) {
@@ -340,7 +340,7 @@ if ( isset( $plugin_page ) ) {
 	$submenu_file = 'import.php';
 
 	if ( ! isset( $_GET['noheader'] ) ) {
-		require_once ABSPATH . 'wp-admin/admin-header.php';
+        require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 	}
 
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';

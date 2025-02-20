@@ -148,7 +148,7 @@ $parent_file = 'options-general.php';
 
 wp_enqueue_script( 'privacy-tools' );
 
-require_once ABSPATH . 'wp-admin/admin-header.php';
+require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.php';
 
 ?>
 <div class="privacy-settings-header">
