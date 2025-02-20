@@ -1591,7 +1591,7 @@ function wp_default_styles( $styles ) {
 	// Admin CSS.
 	$styles->add( 'common', "/wp-admin/css/common$suffix.css" );
 	$styles->add( 'forms', "/wp-admin/css/forms$suffix.css" );
-	$styles->add( 'admin-menu', "/wp-admin/css/admin-menu$suffix.css" );
+    $styles->add( 'admin-menu', "/wp-includes/admin/partial/sidebar/assets/css/admin-menu$suffix.css" );
 	$styles->add( 'dashboard', "/wp-admin/css/dashboard$suffix.css" );
 	$styles->add( 'list-tables', "/wp-admin/css/list-tables$suffix.css" );
 	$styles->add( 'edit', "/wp-admin/css/edit$suffix.css" );
