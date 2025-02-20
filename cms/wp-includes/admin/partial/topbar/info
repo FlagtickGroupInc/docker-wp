@@ -1,0 +1,2 @@
+Modify and Move class-wp-admin-bar.php → class-topbar.php
+Move admin-bar.php → topbar-functions.php
