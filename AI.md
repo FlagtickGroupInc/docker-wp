@@ -1,3 +1,8 @@
+```gitignore
+docker image prune -a
+y
+```
+
 ## 1
 ```shell
 Based on 
