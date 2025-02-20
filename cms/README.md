@@ -15,7 +15,7 @@ Reference:
 sed -i 's/\r$//' ./docker/install_wordpress.sh
 ```
 
-## Build a Local WordPress Image for Use. (standing into docker/cms/ to run command)
+## Build a Local WordPress Image for Use. (standing into docker/cms/ to run command using Dockerfile into /resources folder)
 ```shell
 docker build -t <your image> . 
 docker save -o <your image>.tar <your image>
