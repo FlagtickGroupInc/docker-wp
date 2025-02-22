@@ -17,7 +17,13 @@ RUN mkdir -p /var/www/html/wp-content && \
     chown -R www-data:www-data /var/www/html/wp-content && \
     chmod -R 775 /var/www/html/wp-content
 
+COPY ./docker/resources/000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./docker/resources/apache2.conf /etc/apache2/apache2.conf
+
 RUN sed -i 's/80/8080/' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
+
+RUN a2enmod rewrite && \
+    service apache2 restart
 
 RUN mv "$PHP_INI_DIR"/php.ini-development "$PHP_INI_DIR"/php.ini
 
@@ -45,6 +51,10 @@ RUN sudo -u www-data composer global require \
     automattic/vipwpcs
 
 RUN chown -R www-data:www-data /var/www/html
+
+RUN pecl install xdebug
+
+COPY ./docker/resources/xdebug.ini "$PHP_INI_DIR/conf.d/xdebug.ini"
 
 ENV PATH="/var/www/.composer/vendor/bin:${PATH}"
 
