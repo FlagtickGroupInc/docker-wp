@@ -467,21 +467,18 @@ class WP_Admin_Bar {
             $class .= ' mobile';
         }
 
-        ?>
-        <div id="wpadminbar" class="<?php echo $class; ?>">
-            <?php if ( ! is_admin() && ! did_action( 'wp_body_open' ) ) { ?>
-                <a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e( 'Skip to toolbar' ); ?></a>
-            <?php } ?>
-            <div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="<?php esc_attr_e( 'Toolbar' ); ?>">
-                <?php
-                foreach ( $root->children as $group ) {
-                    $this->_render_group( $group );
-                }
-                ?>
-            </div>
-        </div>
+        $root_children = $root->children ?? [];
 
-        <?php
+        $this->load_template( 'topbar.php', compact( 'class', 'root_children' ) );
+    }
+
+    private function load_template( $template_name, $vars = array() ) {
+        extract( $vars ); 
+        $template_path = __DIR__ . '/../templates/' . $template_name;
+
+        if ( file_exists( $template_path ) ) {
+            include $template_path;
+        }
     }
 
     /**

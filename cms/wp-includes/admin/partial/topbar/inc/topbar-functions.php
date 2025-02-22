@@ -136,30 +136,6 @@ function wp_admin_bar_wp_menu( $wp_admin_bar ) {
 
     require_once __DIR__ . '/../el/wp_logo_menu.php';
 
-    if ( $about_url ) {
-        // Add "About WordPress" link.
-        $wp_admin_bar->add_node(
-            array(
-                'parent' => 'wp-logo',
-                'id'     => 'about',
-                'title'  => __( 'About WordPress' ),
-                'href'   => $about_url,
-            )
-        );
-    }
-
-    if ( $contribute_url ) {
-        // Add contribute link.
-        $wp_admin_bar->add_node(
-            array(
-                'parent' => 'wp-logo',
-                'id'     => 'contribute',
-                'title'  => __( 'Get Involved' ),
-                'href'   => $contribute_url,
-            )
-        );
-    }
-
     // Add WordPress.org link.
     $wp_admin_bar->add_node(
         array(
