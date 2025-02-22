@@ -173,7 +173,7 @@ function wpmu_delete_user( $id ) {
 	 */
 	do_action( 'wpmu_delete_user', $id, $user );
 
-	$blogs = get_blogs_of_user( $id );
+	$blogs = get_sites_for_user( $id );
 
 	if ( ! empty( $blogs ) ) {
 		foreach ( $blogs as $blog ) {
@@ -563,7 +563,7 @@ function _access_denied_splash() {
 		return;
 	}
 
-	$blogs = get_blogs_of_user( get_current_user_id() );
+	$blogs = get_sites_for_user( get_current_user_id() );
 
 	if ( wp_list_filter( $blogs, array( 'userblog_id' => get_current_blog_id() ) ) ) {
 		return;
@@ -771,7 +771,7 @@ function choose_primary_blog() {
 		<th scope="row"><label for="primary_blog"><?php _e( 'Primary Site' ); ?></label></th>
 		<td>
 		<?php
-		$all_blogs    = get_blogs_of_user( get_current_user_id() );
+		$all_blogs    = get_sites_for_user( get_current_user_id() );
 		$primary_blog = (int) get_user_meta( get_current_user_id(), 'primary_blog', true );
 		if ( count( $all_blogs ) > 1 ) {
 			$found = false;
@@ -910,7 +910,7 @@ function confirm_delete_users( $users ) {
 					<?php echo '<input type="hidden" name="user[]" value="' . esc_attr( $user_id ) . '" />' . "\n"; ?>
 				</th>
 			<?php
-			$blogs = get_blogs_of_user( $user_id, true );
+			$blogs = get_sites_for_user( $user_id, true );
 
 			if ( ! empty( $blogs ) ) {
 				?>

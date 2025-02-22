@@ -166,7 +166,7 @@ require_once ABSPATH . 'wp-includes/admin/partial/sidebar/inc/header-functions.p
 
 		<?php
 		if ( is_multisite() ) {
-			$blogs       = get_blogs_of_user( $user->ID, true );
+			$blogs       = get_sites_for_user( $user->ID, true );
 			$blogs_count = count( $blogs );
 
 			if ( $blogs_count > 1 ) {

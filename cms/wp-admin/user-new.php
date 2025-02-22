@@ -65,7 +65,7 @@ if ( isset( $_REQUEST['action'] ) && 'adduser' === $_REQUEST['action'] ) {
 	$username       = $user_details->user_login;
 	$user_id        = $user_details->ID;
 
-	if ( array_key_exists( $blog_id, get_blogs_of_user( $user_id ) ) ) {
+	if ( array_key_exists( $blog_id, get_sites_for_user( $user_id ) ) ) {
 		$redirect = add_query_arg( array( 'update' => 'addexisting' ), 'user-new.php' );
 	} else {
 		if ( isset( $_POST['noconfirmation'] ) && current_user_can( 'manage_network_users' ) ) {

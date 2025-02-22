@@ -735,7 +735,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		 */
 		do_action( 'xmlrpc_call', 'wp.getUsersBlogs', $args, $this );
 
-		$blogs           = (array) get_blogs_of_user( $user->ID );
+		$blogs           = (array) get_sites_for_user( $user->ID );
 		$struct          = array();
 		$primary_blog_id = 0;
 		$active_blog     = get_active_blog_for_user( $user->ID );

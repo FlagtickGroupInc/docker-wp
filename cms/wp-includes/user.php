@@ -959,7 +959,7 @@ function wp_list_users( $args = array() ) {
  * @return object[] A list of the user's sites. An empty array if the user doesn't exist
  *                  or belongs to no sites.
  */
-function get_blogs_of_user( $user_id, $all = false ) {
+function get_sites_for_user( $user_id, $all = false ) {
 	global $wpdb;
 
 	$user_id = (int) $user_id;
@@ -973,7 +973,7 @@ function get_blogs_of_user( $user_id, $all = false ) {
 	 * Filters the list of a user's sites before it is populated.
 	 *
 	 * Returning a non-null value from the filter will effectively short circuit
-	 * get_blogs_of_user(), returning that value instead.
+	 * get_sites_for_user(), returning that value instead.
 	 *
 	 * @since 4.6.0
 	 *
@@ -982,7 +982,7 @@ function get_blogs_of_user( $user_id, $all = false ) {
 	 * @param bool          $all     Whether the returned array should contain all sites, including
 	 *                               those marked 'deleted', 'archived', or 'spam'. Default false.
 	 */
-	$sites = apply_filters( 'pre_get_blogs_of_user', null, $user_id, $all );
+	$sites = apply_filters( 'pre_get_sites_for_user', null, $user_id, $all );
 
 	if ( null !== $sites ) {
 		return $sites;
@@ -1073,7 +1073,7 @@ function get_blogs_of_user( $user_id, $all = false ) {
 	 * @param bool     $all     Whether the returned sites array should contain all sites, including
 	 *                          those marked 'deleted', 'archived', or 'spam'. Default false.
 	 */
-	return apply_filters( 'get_blogs_of_user', $sites, $user_id, $all );
+	return apply_filters( 'get_sites_for_user', $sites, $user_id, $all );
 }
 
 /**

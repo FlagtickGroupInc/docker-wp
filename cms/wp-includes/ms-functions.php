@@ -43,7 +43,7 @@ function get_sitestats() {
  * @return WP_Site|void The blog object
  */
 function get_active_blog_for_user( $user_id ) {
-	$blogs = get_blogs_of_user( $user_id );
+	$blogs = get_sites_for_user( $user_id );
 	if ( empty( $blogs ) ) {
 		return;
 	}
@@ -72,7 +72,7 @@ function get_active_blog_for_user( $user_id ) {
 	}
 
 	if ( ( ! is_object( $primary ) ) || ( 1 == $primary->archived || 1 == $primary->spam || 1 == $primary->deleted ) ) {
-		$blogs = get_blogs_of_user( $user_id, true ); // If a user's primary blog is shut down, check their other blogs.
+		$blogs = get_sites_for_user( $user_id, true ); // If a user's primary blog is shut down, check their other blogs.
 		$ret   = false;
 		if ( is_array( $blogs ) && count( $blogs ) > 0 ) {
 			foreach ( (array) $blogs as $blog_id => $blog ) {
@@ -253,7 +253,7 @@ function remove_user_from_blog( $user_id, $blog_id = 0, $reassign = 0 ) {
 	if ( $primary_blog == $blog_id ) {
 		$new_id     = '';
 		$new_domain = '';
-		$blogs      = get_blogs_of_user( $user_id );
+		$blogs      = get_sites_for_user( $user_id );
 		foreach ( (array) $blogs as $blog ) {
 			if ( $blog->userblog_id == $blog_id ) {
 				continue;
@@ -275,7 +275,7 @@ function remove_user_from_blog( $user_id, $blog_id = 0, $reassign = 0 ) {
 
 	$user->remove_all_caps();
 
-	$blogs = get_blogs_of_user( $user_id );
+	$blogs = get_sites_for_user( $user_id );
 	if ( count( $blogs ) === 0 ) {
 		update_user_meta( $user_id, 'primary_blog', '' );
 		update_user_meta( $user_id, 'source_domain', '' );
@@ -1940,7 +1940,7 @@ function get_current_site() {
 function get_most_recent_post_of_user( $user_id ) {
 	global $wpdb;
 
-	$user_blogs       = get_blogs_of_user( (int) $user_id );
+	$user_blogs       = get_sites_for_user( (int) $user_id );
 	$most_recent_post = array();
 
 	/*

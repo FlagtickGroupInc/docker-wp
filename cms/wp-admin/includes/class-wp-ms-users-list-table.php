@@ -371,7 +371,7 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * @param WP_User $user The current WP_User object.
 	 */
 	public function column_blogs( $user ) {
-		$blogs = get_blogs_of_user( $user->ID, true );
+		$blogs = get_sites_for_user( $user->ID, true );
 		if ( ! is_array( $blogs ) ) {
 			return;
 		}

@@ -91,7 +91,7 @@ if ( isset( $_GET['action'] ) ) {
 								}
 
 								$userfunction = 'all_spam';
-								$blogs        = get_blogs_of_user( $user_id, true );
+								$blogs        = get_sites_for_user( $user_id, true );
 
 								foreach ( (array) $blogs as $details ) {
 									if ( ! is_main_site( $details->userblog_id ) ) { // Main site is not a spam!
@@ -109,7 +109,7 @@ if ( isset( $_GET['action'] ) ) {
 								$user = get_userdata( $user_id );
 
 								$userfunction = 'all_notspam';
-								$blogs        = get_blogs_of_user( $user_id, true );
+								$blogs        = get_sites_for_user( $user_id, true );
 
 								foreach ( (array) $blogs as $details ) {
 									update_blog_status( $details->userblog_id, 'spam', '0' );

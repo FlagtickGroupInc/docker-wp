@@ -19,7 +19,7 @@ if ( ! current_user_can( 'read' ) ) {
 
 $action = isset( $_POST['action'] ) ? $_POST['action'] : 'splash';
 
-$blogs = get_blogs_of_user( $current_user->ID );
+$blogs = get_sites_for_user( $current_user->ID );
 
 $updated = false;
 if ( 'updateblogsettings' === $action && isset( $_POST['primary_blog'] ) ) {

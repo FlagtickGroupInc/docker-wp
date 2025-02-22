@@ -778,7 +778,7 @@ switch ( $action ) {
 							<?php if ( wp_is_application_passwords_available_for_user( $user_id ) ) : ?>
 								<?php
 								if ( is_multisite() ) :
-									$blogs       = get_blogs_of_user( $user_id, true );
+									$blogs       = get_sites_for_user( $user_id, true );
 									$blogs_count = count( $blogs );
 
 									if ( $blogs_count > 1 ) :
