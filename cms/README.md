@@ -24,3 +24,4 @@ docker save -o <your image>.tar <your image>
 ## In a WordPress Multisite setup, each blogname represents a site within the network. 
 Location: [initialize]/[cms/wp-includes/admin/partial/topbar/inc/class-topbar.php]
 -> Change get_blogs_of_user() to get_sites_for_user()
+-> Change get_current_blog_id() to get_active_site_id()

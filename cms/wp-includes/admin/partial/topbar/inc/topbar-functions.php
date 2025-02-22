@@ -420,7 +420,7 @@ function wp_admin_bar_site_menu( $wp_admin_bar ) {
                     'parent' => 'site-name',
                     'id'     => 'edit-site',
                     'title'  => __( 'Manage Site' ),
-                    'href'   => network_admin_url( 'site-info.php?id=' . get_current_blog_id() ),
+                    'href'   => network_admin_url( 'site-info.php?id=' . get_active_site_id() ),
                 )
             );
         }

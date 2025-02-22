@@ -994,7 +994,7 @@ function get_sites_for_user( $user_id, $all = false ) {
 	}
 
 	if ( ! is_multisite() ) {
-		$site_id                        = get_current_blog_id();
+		$site_id                        = get_active_site_id();
 		$sites                          = array( $site_id => new stdClass() );
 		$sites[ $site_id ]->userblog_id = $site_id;
 		$sites[ $site_id ]->blogname    = get_option( 'blogname' );
@@ -1115,7 +1115,7 @@ function is_user_member_of_blog( $user_id = 0, $blog_id = 0 ) {
 	}
 
 	if ( empty( $blog_id ) ) {
-		$blog_id = get_current_blog_id();
+		$blog_id = get_active_site_id();
 	}
 
 	$blog = get_site( $blog_id );
@@ -1260,7 +1260,7 @@ function count_users( $strategy = 'time', $site_id = null ) {
 
 	// Initialize.
 	if ( ! $site_id ) {
-		$site_id = get_current_blog_id();
+		$site_id = get_active_site_id();
 	}
 
 	/**
@@ -1285,7 +1285,7 @@ function count_users( $strategy = 'time', $site_id = null ) {
 	$result      = array();
 
 	if ( 'time' === $strategy ) {
-		if ( is_multisite() && get_current_blog_id() !== $site_id ) {
+		if ( is_multisite() && get_active_site_id() !== $site_id ) {
 			switch_to_blog( $site_id );
 			$avail_roles = wp_roles()->get_names();
 			restore_current_blog();
@@ -1653,7 +1653,7 @@ function wp_dropdown_users( $args = '' ) {
 		'name'                    => 'user',
 		'class'                   => '',
 		'id'                      => '',
-		'blog_id'                 => get_current_blog_id(),
+		'blog_id'                 => get_active_site_id(),
 		'who'                     => '',
 		'include_selected'        => false,
 		'option_none_value'       => -1,
@@ -3598,12 +3598,12 @@ function wp_get_users_with_no_role( $site_id = null ) {
 	global $wpdb;
 
 	if ( ! $site_id ) {
-		$site_id = get_current_blog_id();
+		$site_id = get_active_site_id();
 	}
 
 	$prefix = $wpdb->get_blog_prefix( $site_id );
 
-	if ( is_multisite() && get_current_blog_id() !== $site_id ) {
+	if ( is_multisite() && get_active_site_id() !== $site_id ) {
 		switch_to_blog( $site_id );
 		$role_names = wp_roles()->get_names();
 		restore_current_blog();

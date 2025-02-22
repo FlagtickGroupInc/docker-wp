@@ -318,7 +318,7 @@ class WP_Roles {
 		if ( ! empty( $site_id ) ) {
 			$this->site_id = absint( $site_id );
 		} else {
-			$this->site_id = get_current_blog_id();
+			$this->site_id = get_active_site_id();
 		}
 
 		$this->role_key = $wpdb->get_blog_prefix( $this->site_id ) . 'user_roles';
@@ -359,7 +359,7 @@ class WP_Roles {
 			return $wp_user_roles;
 		}
 
-		if ( is_multisite() && get_current_blog_id() !== $this->site_id ) {
+		if ( is_multisite() && get_active_site_id() !== $this->site_id ) {
 			remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
 
 			$roles = get_blog_option( $this->site_id, $this->role_key, array() );

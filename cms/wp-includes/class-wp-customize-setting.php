@@ -292,7 +292,7 @@ class WP_Customize_Setting {
 		if ( ! isset( $this->_previewed_blog_id ) ) {
 			return false;
 		}
-		return ( get_current_blog_id() === $this->_previewed_blog_id );
+		return ( get_active_site_id() === $this->_previewed_blog_id );
 	}
 
 	/**
@@ -318,7 +318,7 @@ class WP_Customize_Setting {
 	 */
 	public function preview() {
 		if ( ! isset( $this->_previewed_blog_id ) ) {
-			$this->_previewed_blog_id = get_current_blog_id();
+			$this->_previewed_blog_id = get_active_site_id();
 		}
 
 		// Prevent re-previewing an already-previewed setting.

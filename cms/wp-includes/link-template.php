@@ -3983,7 +3983,7 @@ function get_dashboard_url( $user_id = 0, $path = '', $scheme = 'admin' ) {
 	} elseif ( ! is_multisite() ) {
 		$url = admin_url( $path, $scheme );
 	} else {
-		$current_blog = get_current_blog_id();
+		$current_blog = get_active_site_id();
 
 		if ( $current_blog && ( user_can( $user_id, 'manage_network' ) || in_array( $current_blog, array_keys( $blogs ), true ) ) ) {
 			$url = admin_url( $path, $scheme );

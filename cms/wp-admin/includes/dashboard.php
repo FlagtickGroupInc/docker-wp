@@ -563,7 +563,7 @@ function wp_dashboard_quick_press( $error_msg = false ) {
 		$user_id = get_current_user_id();
 
 		// Don't create an option if this is a super admin who does not belong to this site.
-		if ( in_array( get_current_blog_id(), array_keys( get_sites_for_user( $user_id ) ), true ) ) {
+		if ( in_array( get_active_site_id(), array_keys( get_sites_for_user( $user_id ) ), true ) ) {
 			update_user_option( $user_id, 'dashboard_quick_press_last_post_id', (int) $post->ID ); // Save post_ID.
 		}
 	}

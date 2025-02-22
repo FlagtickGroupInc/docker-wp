@@ -93,7 +93,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 			return;
 		}
 
-		$blog_id = get_current_blog_id();
+		$blog_id = get_active_site_id();
 		if ( is_multisite() ) {
 			if ( current_user_can( 'install_themes' ) && current_user_can( 'manage_network_themes' ) ) {
 				printf(

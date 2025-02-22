@@ -656,7 +656,7 @@ function get_oembed_response_data_for_url( $url, $args ) {
 			return false;
 		}
 
-		if ( $site && get_current_blog_id() !== (int) $site->blog_id ) {
+		if ( $site && get_active_site_id() !== (int) $site->blog_id ) {
 			switch_to_blog( $site->blog_id );
 			$switched_blog = true;
 		}

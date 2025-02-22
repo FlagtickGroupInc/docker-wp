@@ -210,7 +210,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 * @return array|false Instance data array, or false if the item is marked for deletion.
 	 */
 	public function value() {
-		if ( $this->is_previewed && get_current_blog_id() === $this->_previewed_blog_id ) {
+		if ( $this->is_previewed && get_active_site_id() === $this->_previewed_blog_id ) {
 			$undefined  = new stdClass(); // Symbol.
 			$post_value = $this->post_value( $undefined );
 
@@ -448,7 +448,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		$this->is_previewed              = true;
 		$this->_original_value           = $this->value();
 		$this->original_nav_menu_term_id = $this->_original_value['nav_menu_term_id'];
-		$this->_previewed_blog_id        = get_current_blog_id();
+		$this->_previewed_blog_id        = get_active_site_id();
 
 		add_filter( 'wp_get_nav_menu_items', array( $this, 'filter_wp_get_nav_menu_items' ), 10, 3 );
 

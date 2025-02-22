@@ -91,7 +91,7 @@ class WP_User_Query {
 	 */
 	public static function fill_query_vars( $args ) {
 		$defaults = array(
-			'blog_id'             => get_current_blog_id(),
+			'blog_id'             => get_active_site_id(),
 			'role'                => '',
 			'role__in'            => array(),
 			'role__not_in'        => array(),
@@ -1075,7 +1075,7 @@ class WP_User_Query {
 		}
 
 		if ( $args['has_published_posts'] || in_array( 'post_count', $ordersby, true ) ) {
-			$switch = $blog_id && get_current_blog_id() !== $blog_id;
+			$switch = $blog_id && get_active_site_id() !== $blog_id;
 			if ( $switch ) {
 				switch_to_blog( $blog_id );
 			}

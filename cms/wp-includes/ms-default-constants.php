@@ -33,7 +33,7 @@ function ms_upload_constants() {
 	 * This is handled in wp_upload_dir() by ignoring UPLOADS for this case.
 	 */
 	if ( ! defined( 'UPLOADS' ) ) {
-		$site_id = get_current_blog_id();
+		$site_id = get_active_site_id();
 
 		define( 'UPLOADS', UPLOADBLOGSDIR . '/' . $site_id . '/files/' );
 

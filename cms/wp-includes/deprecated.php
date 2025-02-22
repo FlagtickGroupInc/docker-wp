@@ -2388,7 +2388,7 @@ function get_users_of_blog( $id = '' ) {
 
 	global $wpdb;
 	if ( empty( $id ) ) {
-		$id = get_current_blog_id();
+		$id = get_active_site_id();
 	}
 	$blog_prefix = $wpdb->get_blog_prefix($id);
 	$users = $wpdb->get_results( "SELECT user_id, user_id AS ID, user_login, display_name, user_email, meta_value FROM $wpdb->users, $wpdb->usermeta WHERE {$wpdb->users}.ID = {$wpdb->usermeta}.user_id AND meta_key = '{$blog_prefix}capabilities' ORDER BY {$wpdb->usermeta}.user_id" );

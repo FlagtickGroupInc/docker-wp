@@ -2362,7 +2362,7 @@ function wp_get_upload_dir() {
 function wp_upload_dir( $time = null, $create_dir = true, $refresh_cache = false ) {
 	static $cache = array(), $tested_paths = array();
 
-	$key = sprintf( '%d-%s', get_current_blog_id(), (string) $time );
+	$key = sprintf( '%d-%s', get_active_site_id(), (string) $time );
 
 	if ( $refresh_cache || empty( $cache[ $key ] ) ) {
 		$cache[ $key ] = _wp_upload_dir( $time );
@@ -2467,9 +2467,9 @@ function _wp_upload_dir( $time = null ) {
 			 */
 
 			if ( defined( 'MULTISITE' ) ) {
-				$ms_dir = '/sites/' . get_current_blog_id();
+				$ms_dir = '/sites/' . get_active_site_id();
 			} else {
-				$ms_dir = '/' . get_current_blog_id();
+				$ms_dir = '/' . get_active_site_id();
 			}
 
 			$dir .= $ms_dir;
@@ -6396,7 +6396,7 @@ function is_main_site( $site_id = null, $network_id = null ) {
 	}
 
 	if ( ! $site_id ) {
-		$site_id = get_current_blog_id();
+		$site_id = get_active_site_id();
 	}
 
 	$site_id = (int) $site_id;
@@ -6415,7 +6415,7 @@ function is_main_site( $site_id = null, $network_id = null ) {
  */
 function get_main_site_id( $network_id = null ) {
 	if ( ! is_multisite() ) {
-		return get_current_blog_id();
+		return get_active_site_id();
 	}
 
 	$network = get_network( $network_id );

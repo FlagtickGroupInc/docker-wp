@@ -322,7 +322,7 @@ function wp_ajax_autocomplete_user() {
 	if ( isset( $_REQUEST['site_id'] ) ) {
 		$id = absint( $_REQUEST['site_id'] );
 	} else {
-		$id = get_current_blog_id();
+		$id = get_active_site_id();
 	}
 
 	$include_blog_users = ( 'search' === $type ? get_users(

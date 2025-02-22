@@ -79,7 +79,7 @@ class WP_Object_Cache {
 	 */
 	public function __construct() {
 		$this->multisite   = is_multisite();
-		$this->blog_prefix = $this->multisite ? get_current_blog_id() . ':' : '';
+		$this->blog_prefix = $this->multisite ? get_active_site_id() . ':' : '';
 	}
 
 	/**

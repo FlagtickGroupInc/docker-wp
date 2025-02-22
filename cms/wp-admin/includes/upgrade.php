@@ -667,8 +667,8 @@ if ( ! function_exists( 'wp_upgrade' ) ) :
 		wp_cache_flush();
 
 		if ( is_multisite() ) {
-			update_site_meta( get_current_blog_id(), 'db_version', $wp_db_version );
-			update_site_meta( get_current_blog_id(), 'db_last_updated', microtime() );
+			update_site_meta( get_active_site_id(), 'db_version', $wp_db_version );
+			update_site_meta( get_active_site_id(), 'db_last_updated', microtime() );
 		}
 
 		delete_transient( 'wp_core_block_css_files' );
@@ -1654,7 +1654,7 @@ function upgrade_280() {
 			}
 			$start += 20;
 		}
-		clean_blog_cache( get_current_blog_id() );
+		clean_blog_cache( get_active_site_id() );
 	}
 }
 

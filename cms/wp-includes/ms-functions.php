@@ -49,7 +49,7 @@ function get_active_blog_for_user( $user_id ) {
 	}
 
 	if ( ! is_multisite() ) {
-		return $blogs[ get_current_blog_id() ];
+		return $blogs[ get_active_site_id() ];
 	}
 
 	$primary_blog = get_user_meta( $user_id, 'primary_blog', true );
@@ -2222,7 +2222,7 @@ function maybe_add_existing_user_to_blog() {
  */
 function add_existing_user_to_blog( $details = false ) {
 	if ( is_array( $details ) ) {
-		$blog_id = get_current_blog_id();
+		$blog_id = get_active_site_id();
 		$result  = add_user_to_blog( $blog_id, $details['user_id'], $details['role'] );
 
 		/**
@@ -2311,7 +2311,7 @@ function is_user_spammy( $user = null ) {
  * @param int $value     The new public value.
  */
 function update_blog_public( $old_value, $value ) {
-	update_blog_status( get_current_blog_id(), 'public', (int) $value );
+	update_blog_status( get_active_site_id(), 'public', (int) $value );
 }
 
 /**

@@ -863,7 +863,7 @@ function wp_start_object_cache() {
 	 * have changed and it may need to update keys and cleanup caches.
 	 */
 	if ( ! $first_init && function_exists( 'wp_cache_switch_to_blog' ) ) {
-		wp_cache_switch_to_blog( get_current_blog_id() );
+		wp_cache_switch_to_blog( get_active_site_id() );
 	} elseif ( function_exists( 'wp_cache_init' ) ) {
 		wp_cache_init();
 	}
@@ -1449,7 +1449,7 @@ function absint( $maybeint ) {
  *
  * @return int Site ID.
  */
-function get_current_blog_id() {
+function get_active_site_id() {
 	global $blog_id;
 
 	return absint( $blog_id );

@@ -229,7 +229,7 @@ Please click the following link to confirm the invite:
 				$new_user_login,
 				$new_user_email,
 				array(
-					'add_to_blog' => get_current_blog_id(),
+					'add_to_blog' => get_active_site_id(),
 					'new_role'    => $_REQUEST['role'],
 				)
 			);

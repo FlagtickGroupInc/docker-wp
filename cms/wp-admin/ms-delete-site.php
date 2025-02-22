@@ -19,7 +19,7 @@ if ( ! current_user_can( 'delete_site' ) ) {
 
 if ( isset( $_GET['h'] ) && '' !== $_GET['h'] && false !== get_option( 'delete_blog_hash' ) ) {
 	if ( hash_equals( get_option( 'delete_blog_hash' ), $_GET['h'] ) ) {
-		wpmu_delete_blog( get_current_blog_id() );
+		wpmu_delete_blog( get_active_site_id() );
 		wp_die(
 			sprintf(
 				/* translators: %s: Network title. */

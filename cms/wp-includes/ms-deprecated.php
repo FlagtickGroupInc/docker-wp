@@ -547,7 +547,7 @@ function is_user_option_local( $key, $user_id = 0, $blog_id = 0 ) {
 
 	$current_user = wp_get_current_user();
 	if ( $blog_id == 0 ) {
-		$blog_id = get_current_blog_id();
+		$blog_id = get_active_site_id();
 	}
 	$local_key = $wpdb->get_blog_prefix( $blog_id ) . $key;
 

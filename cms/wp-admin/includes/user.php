@@ -433,7 +433,7 @@ function wp_delete_user( $id, $reassign = null ) {
 
 	// FINALLY, delete user.
 	if ( is_multisite() ) {
-		remove_user_from_blog( $id, get_current_blog_id() );
+		remove_user_from_blog( $id, get_active_site_id() );
 	} else {
 		$meta = $wpdb->get_col( $wpdb->prepare( "SELECT umeta_id FROM $wpdb->usermeta WHERE user_id = %d", $id ) );
 		foreach ( $meta as $mid ) {

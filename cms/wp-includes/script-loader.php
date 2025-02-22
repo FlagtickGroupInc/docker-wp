@@ -1899,7 +1899,7 @@ function wp_just_in_time_script_localization() {
 		'autosaveL10n',
 		array(
 			'autosaveInterval' => AUTOSAVE_INTERVAL,
-			'blog_id'          => get_current_blog_id(),
+			'blog_id'          => get_active_site_id(),
 		)
 	);
 

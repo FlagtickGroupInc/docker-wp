@@ -65,7 +65,7 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 	$blog_id = (int) $blog_id;
 
 	$switch = false;
-	if ( get_current_blog_id() !== $blog_id ) {
+	if ( get_active_site_id() !== $blog_id ) {
 		$switch = true;
 		switch_to_blog( $blog_id );
 	}
@@ -565,7 +565,7 @@ function _access_denied_splash() {
 
 	$blogs = get_sites_for_user( get_current_user_id() );
 
-	if ( wp_list_filter( $blogs, array( 'userblog_id' => get_current_blog_id() ) ) ) {
+	if ( wp_list_filter( $blogs, array( 'userblog_id' => get_active_site_id() ) ) ) {
 		return;
 	}
 

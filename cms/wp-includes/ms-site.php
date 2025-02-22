@@ -309,7 +309,7 @@ function wp_delete_site( $site_id ) {
  */
 function get_site( $site = null ) {
 	if ( empty( $site ) ) {
-		$site = get_current_blog_id();
+		$site = get_active_site_id();
 	}
 
 	if ( $site instanceof WP_Site ) {
@@ -699,7 +699,7 @@ function wp_initialize_site( $site_id, array $args = array() ) {
 	}
 
 	$switch = false;
-	if ( get_current_blog_id() !== $site->id ) {
+	if ( get_active_site_id() !== $site->id ) {
 		$switch = true;
 		switch_to_blog( $site->id );
 	}
@@ -812,7 +812,7 @@ function wp_uninitialize_site( $site_id ) {
 	}
 
 	$switch = false;
-	if ( get_current_blog_id() !== $site->id ) {
+	if ( get_active_site_id() !== $site->id ) {
 		$switch = true;
 		switch_to_blog( $site->id );
 	}
@@ -929,7 +929,7 @@ function wp_is_site_initialized( $site_id ) {
 	}
 
 	$switch = false;
-	if ( get_current_blog_id() !== $site_id ) {
+	if ( get_active_site_id() !== $site_id ) {
 		$switch = true;
 		remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
 		switch_to_blog( $site_id );

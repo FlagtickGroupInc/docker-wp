@@ -17,7 +17,7 @@ require_once ABSPATH . WPINC . '/ms-network.php';
  * @since MU (3.0.0)
  */
 function wpmu_update_blogs_date() {
-	$site_id = get_current_blog_id();
+	$site_id = get_active_site_id();
 
 	update_blog_details( $site_id, array( 'last_updated' => current_time( 'mysql', true ) ) );
 	/**
@@ -172,7 +172,7 @@ function get_blog_details( $fields = null, $get_all = true ) {
 		}
 	} else {
 		if ( ! $fields ) {
-			$blog_id = get_current_blog_id();
+			$blog_id = get_active_site_id();
 		} elseif ( ! is_numeric( $fields ) ) {
 			$blog_id = get_id_from_blogname( $fields );
 		} else {
@@ -240,7 +240,7 @@ function get_blog_details( $fields = null, $get_all = true ) {
 
 	$switched_blog = false;
 
-	if ( get_current_blog_id() !== $blog_id ) {
+	if ( get_active_site_id() !== $blog_id ) {
 		switch_to_blog( $blog_id );
 		$switched_blog = true;
 	}
@@ -282,7 +282,7 @@ function get_blog_details( $fields = null, $get_all = true ) {
 function refresh_blog_details( $blog_id = 0 ) {
 	$blog_id = (int) $blog_id;
 	if ( ! $blog_id ) {
-		$blog_id = get_current_blog_id();
+		$blog_id = get_active_site_id();
 	}
 
 	clean_blog_cache( $blog_id );
@@ -325,7 +325,7 @@ function update_blog_details( $blog_id, $details = array() ) {
 function clean_site_details_cache( $site_id = 0 ) {
 	$site_id = (int) $site_id;
 	if ( ! $site_id ) {
-		$site_id = get_current_blog_id();
+		$site_id = get_active_site_id();
 	}
 
 	wp_cache_delete( $site_id, 'site-details' );
@@ -353,10 +353,10 @@ function get_blog_option( $id, $option, $default_value = false ) {
 	$id = (int) $id;
 
 	if ( empty( $id ) ) {
-		$id = get_current_blog_id();
+		$id = get_active_site_id();
 	}
 
-	if ( get_current_blog_id() === $id ) {
+	if ( get_active_site_id() === $id ) {
 		return get_option( $option, $default_value );
 	}
 
@@ -400,10 +400,10 @@ function add_blog_option( $id, $option, $value ) {
 	$id = (int) $id;
 
 	if ( empty( $id ) ) {
-		$id = get_current_blog_id();
+		$id = get_active_site_id();
 	}
 
-	if ( get_current_blog_id() === $id ) {
+	if ( get_active_site_id() === $id ) {
 		return add_option( $option, $value );
 	}
 
@@ -427,10 +427,10 @@ function delete_blog_option( $id, $option ) {
 	$id = (int) $id;
 
 	if ( empty( $id ) ) {
-		$id = get_current_blog_id();
+		$id = get_active_site_id();
 	}
 
-	if ( get_current_blog_id() === $id ) {
+	if ( get_active_site_id() === $id ) {
 		return delete_option( $option );
 	}
 
@@ -459,7 +459,7 @@ function update_blog_option( $id, $option, $value, $deprecated = null ) {
 		_deprecated_argument( __FUNCTION__, '3.1.0' );
 	}
 
-	if ( get_current_blog_id() === $id ) {
+	if ( get_active_site_id() === $id ) {
 		return update_option( $option, $value );
 	}
 
@@ -495,7 +495,7 @@ function update_blog_option( $id, $option, $value, $deprecated = null ) {
 function switch_to_blog( $new_blog_id, $deprecated = null ) {
 	global $wpdb;
 
-	$prev_blog_id = get_current_blog_id();
+	$prev_blog_id = get_active_site_id();
 	if ( empty( $new_blog_id ) ) {
 		$new_blog_id = $prev_blog_id;
 	}
@@ -609,7 +609,7 @@ function restore_current_blog() {
 	}
 
 	$new_blog_id  = array_pop( $GLOBALS['_wp_switched_stack'] );
-	$prev_blog_id = get_current_blog_id();
+	$prev_blog_id = get_active_site_id();
 
 	if ( $new_blog_id === $prev_blog_id ) {
 		/** This filter is documented in wp-includes/ms-blogs.php */
